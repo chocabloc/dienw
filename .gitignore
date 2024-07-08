@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# IDE stuff
+.qtc_clangd
+.vscode
+engine.cflags
+engine.config
+engine.creator*
+engine.cxxflags
+engine.files
+engine.includes
