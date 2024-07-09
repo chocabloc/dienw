@@ -60,3 +60,5 @@ engine.creator*
 engine.cxxflags
 engine.files
 engine.includes
+
+engine

@@ -9,4 +9,6 @@ typedef struct {
     };
 } vec3_t;
 
-typedef vec3_t mat3_t[3];
+typedef struct {
+    vec3_t dat[3];
+} mat3_t;

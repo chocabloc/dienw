@@ -9,11 +9,8 @@ int main(void) {
     gfx_init();
     mgr_init();
 
-    instance_t cube = {.id = 0, .pos = {0, 0, 0} };
-    int prog = shader_make_program("data/shaders/shader.vert",
-                                   "data/shaders/shader.frag");
-
-    glUseProgram(prog);
+    instance_t cube;
+    mgr_new_instance(0, &cube);
 
     // main loop
     while(!gfx_should_close()) {
