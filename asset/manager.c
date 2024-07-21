@@ -7,17 +7,17 @@
 #include "gfx/shader.h"
 #include "manager.h"
 
-static size_t nobjs;
+static int nobjs;
 static object_t* objs;
 
-static size_t nshdrs;
+static int nshdrs;
 static shader_t* shdrs;
 
-static vec3_t cube_verts[] = (vec3_t[]) {
-    -0.5, -0.4, 0.0,
-    0.5, -0.5, 0.0,
-    0.5, 0.5, 0.0,
-    -0.5, 0.5, 0.0,
+static vec3_t cube_verts[] = {
+    -0.5, -0.5, -0.5,
+    0.5, -0.5, -0.5,
+    0.5, 0.5, -0.5,
+    -0.5, 0.5, -0.5,
     -0.5, -0.5, 0.5,
     0.5, -0.5, 0.5,
     0.5, 0.5, 0.5,
@@ -62,8 +62,8 @@ void mgr_init() {
     shdrs = calloc(1, sizeof(shader_t)*1);
     shdrs[0].prog = shader_make_program("data/shaders/shader.vert",
                                         "data/shaders/shader.frag");
-    shdrs[0].uniforms.pos = glGetUniformLocation(shdrs[0].prog, "obj_pos");
-    shdrs[0].uniforms.trans = glGetUniformLocation(shdrs[0].prog, "obj_trans");
+    shdrs[0].uniforms.mat_vm = glGetUniformLocation(shdrs[0].prog, "mat_vm");
+    shdrs[0].uniforms.mat_p = glGetUniformLocation(shdrs[0].prog, "mat_p");
 }
 
 object_t* mgr_get_object(obj_id id) {
@@ -79,10 +79,10 @@ shader_t* mgr_get_shader(shdr_id id) {
 void mgr_new_instance(obj_id id, instance_t* ins) {
     error_if(id >= nobjs, "no such object: %d.", id);
     ins->id = id;
-    ins->pos = (vec3_t) {0, 0, 0};
-    ins->trans = (mat3_t) {
-        0.5, 0, 0,
-        0, 1, 0,
-        0, 0, 1
+    ins->trans = (mat4_t) {
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
     };
 }

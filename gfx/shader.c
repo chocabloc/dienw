@@ -23,7 +23,7 @@ static GLuint compile(const char* path, GLenum type) {
     // try to compile
     int success;
     GLuint sh = glCreateShader(type);
-    glShaderSource(sh, 1, (const char**)(&src), NULL);
+    glShaderSource(sh, 1, (const char**)&src, NULL);
     glCompileShader(sh);
 
     // check if succeeded

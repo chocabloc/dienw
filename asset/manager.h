@@ -10,8 +10,8 @@ typedef int shdr_id;
 typedef struct {
     GLuint prog;
     struct {
-        GLuint pos;
-        GLuint trans;
+        GLuint mat_vm;
+        GLuint mat_p;
     } uniforms;
 } shader_t;
 
@@ -31,8 +31,7 @@ typedef struct {
 } object_t;
 typedef struct {
     obj_id id;
-    vec3_t pos;
-    mat3_t trans;
+    mat4_t trans;
 } instance_t;
 
 void mgr_init();

@@ -52,13 +52,7 @@ Mkfile.old
 dkms.conf
 
 # IDE stuff
-.qtc_clangd
+.idea
 .vscode
-engine.cflags
-engine.config
-engine.creator*
-engine.cxxflags
-engine.files
-engine.includes
 
 engine
